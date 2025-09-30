@@ -69,6 +69,59 @@ def calculadora(): ### chama a funçao
         </form>
     ''' ##### retorna a opçao escolhida para fazer a conta 
 
+
+
+
+#aula 
 # Rodar o servidor
 if __name__ == '__main__':
+    app.run(debug=True)
+
+
+
+
+from flask import Flask
+
+
+app = Flask(__name__)
+
+
+@app.route('/') # definindo uma rota
+def home():
+    return 'Seja bem vindo'
+
+# CALCULADORA
+@app.route('/calculadora/soma/<int:n1>/<int:n2>') # definindo uma rota
+def soma(n1,n2):
+    # resultado = n1 + n2
+    return f'Somando os valores {n1} e {n2} = {n1 + n2}'
+
+@app.route('/calculadora/divisao/<int:n1>/<int:n2>') # definindo uma rota
+def divisao(n1,n2):
+    # resultado = n1 + n2
+    if n2 == 0:
+        return f'Esta invalido'
+    else:
+        return f'Somando os valores {n1} e {n2} = {n1 / n2}'
+
+@app.route('/calculadora/multiplicacao/<int:n1>/<int:n2>') # definindo uma rota
+def multiplicacao(n1,n2):
+    # resultado = n1 + n2
+    return f'Somando os valores {n1} e {n2} = {n1 * n2}'
+
+@app.route('/calculadora/subtracao/<int:n1>/<int:n2>') # definindo uma rota
+def subtracao(n1,n2):
+    # resultado = n1 + n2
+    return f'Somando os valores {n1} e {n2} = {n1 - n2}'
+
+
+
+
+
+
+
+
+
+# PARA DEIXAR O CÓDIGO RODANDO
+if __name__ == "__main__":
     app.run(debug=True)
